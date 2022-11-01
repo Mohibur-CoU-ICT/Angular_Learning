@@ -2,6 +2,6 @@ h3 {
   color: blue;
 }
 
-div[app-users] {
-  background-color: gray;
+.app-users {
+  background-color: #3d5e7f;
 }
