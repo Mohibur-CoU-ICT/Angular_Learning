@@ -1,4 +1,9 @@
 <h3>Users Component</h3>
+<div class="my-2">
+  <label>User name</label>
+  <input type="text" class="form-control" (input)="onUpdateUser($event)">
+  <div>{{ userName }}</div>
+</div>
 <button
   class="btn btn-primary"
   [disabled]="!allowNewUser"
