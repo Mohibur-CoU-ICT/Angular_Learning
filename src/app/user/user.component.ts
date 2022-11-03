@@ -3,6 +3,11 @@ import { Component } from "@angular/core";
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
+  styles: [`
+    .offline {
+      color: white;
+    }
+  `]
 })
 export class UserComponent {
   userId: number = 10;
