@@ -1,1 +1,3 @@
-<div>{{ "User" }} with id {{ userId }} is {{ getUserStatus() }}</div>
+<div class="my-2" [ngStyle]="{ 'background-color' : getColor() }">
+  {{ "User" }} with id {{ userId }} is {{ getUserStatus() }}
+</div>
