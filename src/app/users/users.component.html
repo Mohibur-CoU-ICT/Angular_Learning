@@ -23,6 +23,4 @@
   <div>No user is created -> using ng-template. This method is written second but comes first.</div>
 </ng-template>
 
-<app-user></app-user>
-<app-user></app-user>
-<app-user></app-user>
+<app-user *ngFor="let user of users"></app-user>

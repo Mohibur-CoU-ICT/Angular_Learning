@@ -14,6 +14,7 @@ export class UsersComponent implements OnInit {
   allowNewUser = false;
   userCreatedStatus = "No user is created";
   userName: string = '';
+  users: string[] = [];
   isUserCreated: boolean = false;
 
   constructor() {
@@ -25,6 +26,7 @@ export class UsersComponent implements OnInit {
   changeUserCreatedStatus() {
     this.isUserCreated = true;
     this.userCreatedStatus = "User is created";
+    this.users.push(this.userName);
   }
 
   onUpdateUser(event: Event) {
