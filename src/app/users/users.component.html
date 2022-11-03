@@ -12,7 +12,11 @@
 >
   Add User
 </button>
-<div>{{ userCreatedStatus }}</div>
+
+<div *ngIf="isUserCreated">
+  User is created and the username is {{ userName }}
+</div>
+
 <app-user></app-user>
 <app-user></app-user>
 <app-user></app-user>
