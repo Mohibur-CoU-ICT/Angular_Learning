@@ -2,6 +2,7 @@
 <div class="my-2">
   <label>User name</label>
   <input type="text" class="form-control" (input)="onUpdateUser($event)">
+  <input type="text" class="form-control" [(ngModel)]="userName">
   <div>{{ userName }}</div>
 </div>
 <button
