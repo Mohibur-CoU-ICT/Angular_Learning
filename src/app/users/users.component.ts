@@ -11,7 +11,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersComponent implements OnInit {
 
-  constructor() { }
+  allowNewUser = false;
+
+  constructor() {
+    setTimeout(() => {
+      this.allowNewUser = true;
+    }, 3000);
+  }
 
   ngOnInit(): void {
   }
