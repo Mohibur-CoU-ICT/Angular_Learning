@@ -1,6 +1,12 @@
 <h3>Users Component</h3>
-<button class="btn btn-primary" [disabled]="!allowNewUser">Add User</button>
-<div [innerText]="allowNewUser"></div>
+<button
+  class="btn btn-primary"
+  [disabled]="!allowNewUser"
+  (click)="changeUserCreatedStatus()"
+>
+  Add User
+</button>
+<div>{{ userCreatedStatus }}</div>
 <app-user></app-user>
 <app-user></app-user>
 <app-user></app-user>
