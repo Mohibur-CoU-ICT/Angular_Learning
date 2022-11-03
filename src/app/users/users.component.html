@@ -13,9 +13,15 @@
   Add User
 </button>
 
-<div *ngIf="isUserCreated">
+<div *ngIf="isUserCreated; else noUser">
   User is created and the username is {{ userName }}
 </div>
+<div *ngIf="!isUserCreated">
+  No user is created -> using ! (not).
+</div>
+<ng-template #noUser>
+  <div>No user is created -> using ng-template. This method is written second but comes first.</div>
+</ng-template>
 
 <app-user></app-user>
 <app-user></app-user>
