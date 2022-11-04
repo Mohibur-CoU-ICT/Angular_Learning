@@ -4,7 +4,9 @@ import {
   AfterViewChecked,
   AfterViewInit,
   Component,
+  ContentChild,
   DoCheck,
+  ElementRef,
   Input,
   OnChanges,
   OnDestroy,
@@ -29,6 +31,7 @@ export class UserComponent implements
 
   @Input('user') userName!: string;
   @Input() name!: string;
+  @ContentChild('userParagraph') userParagraph!: ElementRef;
 
   constructor() {
     console.log('constructor of UserComponent called.');
@@ -40,6 +43,7 @@ export class UserComponent implements
 
   ngOnInit(): void {
     console.log('ngOnInit of UserComponent called.');
+    console.log('userParagraph =', this.userParagraph.nativeElement.textContent);
   }
 
   ngDoCheck(): void {
@@ -48,6 +52,7 @@ export class UserComponent implements
 
   ngAfterContentInit(): void {
     console.log('ngAfterContentInit of UserComponent called.');
+    console.log('userParagraph =', this.userParagraph.nativeElement.textContent);
   }
 
   ngAfterContentChecked(): void {
