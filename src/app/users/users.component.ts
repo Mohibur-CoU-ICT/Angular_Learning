@@ -24,4 +24,7 @@ export class UsersComponent implements OnInit {
     this.name = "Mohibur Rahman";
   }
 
+  destroyUserComponent() {
+    this.users = [];
+  }
 }
