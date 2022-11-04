@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-users',
@@ -7,8 +7,9 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class UsersComponent implements OnInit {
 
-  users: string[] = [];
-  
+  users: string[] = ["Mohibur"];
+  name: string = '';
+
   constructor() {
   }
 
@@ -17,6 +18,10 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  changeName() {
+    this.name = "Mohibur Rahman";
   }
 
 }
