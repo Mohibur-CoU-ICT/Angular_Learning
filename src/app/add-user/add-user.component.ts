@@ -8,15 +8,14 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class AddUserComponent implements OnInit {
 
   @Output() userNameEE = new EventEmitter<string>();
-  userName: string = '';
-
+  
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  addUser() {
-    this.userNameEE.emit(this.userName);
+  addUser(input: HTMLInputElement) {
+    this.userNameEE.emit(input.value);
   }
 
 }
