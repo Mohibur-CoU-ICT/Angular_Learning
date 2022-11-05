@@ -9,9 +9,9 @@
   </app-user>
 </div>
 
-<div class="appHighlightText">
+<div class="appHighlightText mb-3">
   Background color red using custom attribute directive.
 </div>
-<div appRendererHighlight>
-  Background color green using custom attribute directive using Renderer2.
+<div appRendererHighlight [mouseOverColor]="'maroon'" [mouseLeaveColor]="'black'" [clickColor]="'red'">
+  <code>defaultColor = 'gray' [mouseOverColor]="'maroon'" [mouseLeaveColor]="'black'" [clickColor]="'red'"</code>
 </div>
