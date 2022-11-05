@@ -1,3 +1,8 @@
-<div>
-  <ng-content></ng-content>
+<div class="m-2">
+  <span>Username : {{ user.name }}</span>
+  <span class="ms-3">Status : {{ user.status }}</span>
+  <span>
+    <button class="btn btn-primary ms-2" (click)="updateStatus('Active')">Active</button>
+    <button class="btn btn-primary ms-2" (click)="updateStatus('Inactive')">In Active</button>
+  </span>
 </div>

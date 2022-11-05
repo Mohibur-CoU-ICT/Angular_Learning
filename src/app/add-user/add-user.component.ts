@@ -1,25 +1,25 @@
 import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { LoggingService } from '../services/logging.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',
   styleUrls: ['./add-user.component.css'],
-  providers: [LoggingService]
+  providers: [UserService]
 })
 export class AddUserComponent implements OnInit {
 
-  @Output() userNameEE = new EventEmitter<string>();
   @ViewChild('userInput') userInput!: ElementRef;
+  userName!: string;
+  status: string = 'Active';
 
-  constructor(private loggingService: LoggingService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
   }
 
   addUser() {
-    this.userNameEE.emit(this.userInput.nativeElement.value);
-    this.loggingService.logToConsole('user is added with name : ' + this.userInput.nativeElement.value);
+    this.userService.addUser(this.userName, this.status);
   }
 
 }

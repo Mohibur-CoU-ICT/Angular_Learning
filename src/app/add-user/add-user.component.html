@@ -1,8 +1,12 @@
-<div class="form-group">
-  <h3>Add User</h3>
-  <label for="">User name: </label>
-  <input type="text" class="form-control" #userInput>
-  <div class="mt-2">
-    <button class="btn btn-primary" (click)="addUser()">Add User</button>
+<div class="row">
+  <div class="col-md-12">
+    <div class="form-group">
+      <h3>Add User</h3>
+      <label for="">User name: </label>
+      <input type="text" class="form-control" [(ngModel)]="userName">
+      <div class="mt-2">
+        <button class="btn btn-primary" (click)="addUser()">Add User</button>
+      </div>
+    </div>
   </div>
 </div>
