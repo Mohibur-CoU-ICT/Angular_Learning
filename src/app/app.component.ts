@@ -5,7 +5,6 @@ import { UserService } from './services/user.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [UserService]
 })
 export class AppComponent implements OnInit {
   title = 'Angular_Learning';
