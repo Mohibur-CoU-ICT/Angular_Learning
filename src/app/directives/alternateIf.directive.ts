@@ -5,19 +5,21 @@ import { Directive, Input, OnChanges, SimpleChanges, TemplateRef, ViewContainerR
 })
 export class AlternateIfDirective implements OnChanges {
 
-  @Input() appAlternateIf!: boolean;
+  @Input() set appAlternateIf(condition: boolean) {
+    if (condition) {
+      this.vcRef.createEmbeddedView(this.templateRef);
+    }
+    else {
+      this.vcRef.clear();
+    }
+  }
 
   constructor(private templateRef: TemplateRef<any>, private vcRef: ViewContainerRef) {
     
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.appAlternateIf) {
-      this.vcRef.createEmbeddedView(this.templateRef);
-    }
-    else {
-      this.vcRef.clear();
-    }
+    
   }
 
 }
