@@ -17,6 +17,7 @@ export class AddUserComponent implements OnInit {
 
   addUser() {
     this.userNameEE.emit(this.userInput.nativeElement.value);
+    console.log('user is added with name : ' + this.userInput.nativeElement.value);
   }
 
 }

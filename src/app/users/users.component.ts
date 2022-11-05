@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LogginService } from '../services/logging.service';
 
 @Component({
   selector: 'app-users',
@@ -24,6 +25,8 @@ export class UsersComponent implements OnInit {
 
   changeName() {
     this.name = "Mohibur Rahman";
+    let loggingService = new LogginService();
+    loggingService.logToConsole('name is changed to : ' + this.name);
   }
 
   destroyUserComponent() {
