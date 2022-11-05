@@ -1,7 +1,7 @@
 import { Directive, OnInit, ElementRef } from '@angular/core';
 
 @Directive({
-  selector: '[appHighlightText]'
+  selector: 'appHighlightText'
 })
 export class HighlightTextDirective implements OnInit {
 
