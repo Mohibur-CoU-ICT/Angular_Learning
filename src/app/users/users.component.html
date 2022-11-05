@@ -15,3 +15,15 @@
 <div appRendererHighlight [mouseOverColor]="'maroon'" [mouseLeaveColor]="'black'" [clickColor]="'red'">
   <code>defaultColor = 'gray' [mouseOverColor]="'maroon'" [mouseLeaveColor]="'black'" [clickColor]="'red'"</code>
 </div>
+
+<div *ngIf="isAvailable">
+  Show the div when isAvailable is true using ngIf.
+</div>
+
+<p class="d-none">Angular will convert the above div to the below div.</p>
+
+<ng-template [ngIf]="isAvailable">
+  <div>
+    Show the div when isAvailable is true using ng-template with ngIf.
+  </div>
+</ng-template>

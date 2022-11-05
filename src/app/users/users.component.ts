@@ -9,6 +9,7 @@ export class UsersComponent implements OnInit {
 
   users: string[] = ["Mohibur"];
   name: string = '';
+  isAvailable: boolean = true;
 
   constructor() {
   }
