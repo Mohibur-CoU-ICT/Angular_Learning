@@ -16,6 +16,10 @@
   <code>defaultColor = 'gray' [mouseOverColor]="'maroon'" [mouseLeaveColor]="'black'" [clickColor]="'red'"</code>
 </div>
 
+<div>
+  <button class="btn btn-warning my-3" (click)="isAvailable = !isAvailable">Toggle</button>
+</div>
+
 <div *ngIf="isAvailable">
   Show the div when isAvailable is true using ngIf.
 </div>
@@ -27,3 +31,7 @@
     Show the div when isAvailable is true using ng-template with ngIf.
   </div>
 </ng-template>
+
+<div *appAlternateIf="isAvailable">
+  Create custom structural directive in the Angular using TemplateRef and ViewContainerRef.
+</div>
