@@ -35,3 +35,9 @@
 <div *appAlternateIf="isAvailable">
   Create custom structural directive in the Angular using TemplateRef and ViewContainerRef.
 </div>
+
+<div [ngSwitch]="value">
+  <div *ngSwitchCase="10">Value is 10</div>
+  <div *ngSwitchCase="1">Value is 15</div>
+  <div *ngSwitchDefault>Value is default</div>
+</div>
