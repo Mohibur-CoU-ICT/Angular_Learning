@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { LogginService } from '../services/logging.service';
+import { LoggingService } from '../services/logging.service';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+  styleUrls: ['./users.component.css'],
+  providers: [LoggingService]
 })
 export class UsersComponent implements OnInit {
 
@@ -13,7 +14,7 @@ export class UsersComponent implements OnInit {
   isAvailable: boolean = true;
   value: number = 10;
 
-  constructor() {
+  constructor(private loggingService: LoggingService) {
   }
 
   addUser(userName: string) {
@@ -25,8 +26,7 @@ export class UsersComponent implements OnInit {
 
   changeName() {
     this.name = "Mohibur Rahman";
-    let loggingService = new LogginService();
-    loggingService.logToConsole('name is changed to : ' + this.name);
+    this.loggingService.logToConsole('name is changed to : ' + this.name);
   }
 
   destroyUserComponent() {
