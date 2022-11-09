@@ -6,6 +6,14 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { UsersComponent } from './users/users.component';
 import { RolesComponent } from './roles/roles.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { Routes, RouterModule } from '@angular/router';
+
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'users', component: UsersComponent },
+  { path: 'categories', component: CategoriesComponent },
+];
 
 @NgModule({
   declarations: [
@@ -13,10 +21,12 @@ import { RolesComponent } from './roles/roles.component';
     HomeComponent,
     UsersComponent,
     RolesComponent,
+    CategoriesComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    RouterModule.forRoot(routes),
   ],
   providers: [
   ],
