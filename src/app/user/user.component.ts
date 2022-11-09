@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  styleUrls: ['./user.component.css'],
 })
 export class UserComponent implements OnInit {
+  user!: { id: string; name: string };
 
-  user!: {id: string, name: string};
-
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((data: Params) => {
@@ -21,4 +20,13 @@ export class UserComponent implements OnInit {
     });
   }
 
+  getHasanDetails() {
+    this.router.navigate(['/users', '2', 'hasan'], {
+      queryParams: {
+        page: 1,
+        search: 'hasan',
+      },
+      fragment: 'loading'
+    });
+  }
 }
