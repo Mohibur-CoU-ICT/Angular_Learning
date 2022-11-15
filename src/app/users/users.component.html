@@ -2,3 +2,11 @@
 <div>
   <button (click)="categoriesClick()">Goto Categories</button>
 </div>
+
+<a
+  [routerLink]="['/users', '1', 'Mohibur']"
+  [queryParams]="{ page: 1, search: 'mohibur' }"
+  [fragment]="'loading'"
+>
+  Get Mohibur Details
+</a>

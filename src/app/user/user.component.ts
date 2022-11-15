@@ -9,7 +9,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 export class UserComponent implements OnInit {
   user!: { id: string; name: string };
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((data: Params) => {
@@ -17,6 +17,14 @@ export class UserComponent implements OnInit {
         id: data['id'],
         name: data['name'],
       };
+    });
+
+    this.route.queryParams.subscribe((data: Params) => {
+      console.log('queryParams =', data, typeof(data));
+    });
+
+    this.route.fragment.subscribe((data) => {
+      console.log('fragment =', data, typeof(data));
     });
   }
 
