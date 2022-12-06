@@ -1,12 +1,27 @@
 <ul class="nav flex-column">
   <li class="nav-item">
-    <a [routerLink]="['/users', 1, 'mohibur']" class="nav-link">Get Mohibur Details</a>
+    <a [routerLink]="['/users', 1, 'mohibur']" 
+      [queryParams]="{page: 1, search: 'Mohibur'}"
+      class="nav-link"
+    >
+      Get Mohibur Details
+    </a>
   </li>
   <li class="nav-item">
-    <a [routerLink]="['/users', 2, 'mamun']" class="nav-link">Get Mamun Details</a>
+    <a [routerLink]="['/users', 2, 'mamun']" 
+      [queryParams]="{page: 2, search: 'Mamun'}"
+      class="nav-link"
+    >
+      Get Mamun Details
+    </a>
   </li>
   <li class="nav-item">
-    <a [routerLink]="['/users', 3, 'hasan']" class="nav-link">Get Hasan Details</a>
+    <a [routerLink]="['/users', 3, 'hasan']" 
+    [queryParams]="{page: 3, search: 'Hasan'}"
+      class="nav-link"
+    >
+      Get Hasan Details
+    </a>
   </li>
 </ul>
 

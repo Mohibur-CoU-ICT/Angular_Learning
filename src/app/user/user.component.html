@@ -3,14 +3,5 @@
   <div>User with name is {{ user.name }}</div>
 </div>
 <div>
-  <a
-    [routerLink]="['/users', '1', 'mohibur']"
-    [queryParams]="{ page: 1, search: 'mohibur' }"
-    [fragment]="'load'"
-    >Get Mohibur Details</a
-  >
-</div>
-
-<div>
-  <button (click)="getHasanDetails()">Get Hasan Details</button>
+  <button (click)="onUserEdit()">Edit User</button>
 </div>
