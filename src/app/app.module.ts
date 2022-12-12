@@ -11,6 +11,8 @@ import { UserComponent } from './user/user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AuthService } from './services/guards/auth.service';
+import { AuthGuardService } from './services/guards/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { AppRoutingModule } from './app-routing.module';
     FormsModule,
   ],
   providers: [
+    AuthService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })
