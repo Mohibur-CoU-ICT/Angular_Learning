@@ -14,6 +14,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './services/guards/auth.service';
 import { AuthGuardService } from './services/guards/auth-guard.service';
 import { DeactiveGuardService } from './services/guards/deactivate-guard.service';
+import { UserResolveService } from './services/resolvers/user-resolve.service';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { DeactiveGuardService } from './services/guards/deactivate-guard.service
   providers: [
     AuthService,
     AuthGuardService,
-    DeactiveGuardService
+    DeactiveGuardService,
+    UserService,
+    UserResolveService
   ],
   bootstrap: [AppComponent]
 })

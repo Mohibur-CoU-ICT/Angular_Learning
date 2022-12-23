@@ -19,12 +19,12 @@ export class EditUserComponent implements OnInit, IDeactiveGuard {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe((data: Params) => {
+    this.route.data.subscribe(data => {
+      console.log('data of edit-user =', data);
       this.user = {
-        id: data['id'],
-        name: data['name']
+        id: data['user']['id'],
+        name: data['user']['name']
       };
-
       this.editUserDetails = { ...this.user };
     });
   }
