@@ -10,7 +10,7 @@ import { UserComponent } from "./user/user.component";
 import { UsersComponent } from "./users/users.component";
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent, data: { page: 1, search: 'Mohibur' } },
   {
     path: 'users',
     component: UsersComponent,
