@@ -1,4 +1,9 @@
+import { Subject } from "rxjs";
+
 export class UserService {
+
+  addUserEvent = new Subject<boolean>();
+
   getUser(id: string) {
     if (id === '1') {
       return {
@@ -11,5 +16,9 @@ export class UserService {
         name: 'Hasan'
       };
     }
+  }
+
+  addUser() {
+    this.addUserEvent.next(true);
   }
 }
