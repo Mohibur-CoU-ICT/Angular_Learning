@@ -4,24 +4,27 @@
       <form (ngSubmit)="submitForm()" #form="ngForm">
         <div class="form-group">
           <label for="username">User Name</label>
-          <input type="text" class="form-control" id="username" name="username" (input)="onUserNameInput()" ngModel/>
+          <input #username="ngModel" type="text" class="form-control" id="username" name="username" minlength="3" maxlength="20" ngModel required/>
+          <span class="help-text" *ngIf="username.touched && username.invalid">Username length should be between 3 to 20</span>
         </div>
 
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="text" class="form-control" id="email" name="email" ngModel/>
+          <input #email="ngModel" type="text" class="form-control" id="email" name="email" ngModel required email/>
+          <span class="help-text" *ngIf="email.touched && email.invalid">Please enter a valid email</span>
         </div>
         
         <div class="form-group">
           <label for="gender">Gender</label>
-          <select class="form-control" id="gender" name="gender" ngModel>
+          <select #gender="ngModel" class="form-control" id="gender" name="gender" ngModel required>
             <option value="male">Male</option>
             <option value="female">Female</option>
           </select>
+          <span class="help-text" *ngIf="gender.touched && gender.invalid">Please select a gender</span>
         </div>
 
         <div class="mt-2">
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Submit</button>
         </div>
       </form>
     </div>
