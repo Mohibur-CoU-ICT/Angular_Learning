@@ -7,6 +7,7 @@ import { PageNotFoundComponent } from "./page-not-found/page-not-found.component
 import { AuthGuardService } from "./services/guards/auth-guard.service";
 import { DeactiveGuardService } from "./services/guards/deactivate-guard.service";
 import { UserResolveService } from "./services/resolvers/user-resolve.service";
+import { TemplateFormComponent } from "./template-form/template-form.component";
 import { UserComponent } from "./user/user.component";
 import { UsersComponent } from "./users/users.component";
 
@@ -22,6 +23,7 @@ const routes: Routes = [
     ],
   },
   { path: 'categories', component: CategoriesComponent },
+  { path: 'template-form', component: TemplateFormComponent },
   { path: 'not-found', component: PageNotFoundComponent },
   { path: '**', redirectTo: 'not-found' },
 ];
