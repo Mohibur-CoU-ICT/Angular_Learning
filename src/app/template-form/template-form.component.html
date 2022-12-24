@@ -2,6 +2,8 @@
   <div class="row">
     <div class="col-md=12">
       <form (ngSubmit)="submitForm()" #form="ngForm">
+        <button class="btn btn-sm btn-info" (click)="setValues()">Set values</button>
+        <button class="btn btn-sm btn-info ms-5" (click)="patchValues()">Patch values</button>
         <div *ngIf="userData.touched && userData.invalid">Userdata is invalid</div>
         <div #userData="ngModelGroup" ngModelGroup="userData">
           <div class="form-group">
