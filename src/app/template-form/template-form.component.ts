@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -8,13 +8,19 @@ import { NgForm } from '@angular/forms';
 })
 export class TemplateFormComponent implements OnInit {
 
+  @ViewChild('form') signUpForm!: NgForm;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  submitForm(form: NgForm) {
-    console.log(form);
+  onUserNameInput() {
+    console.log(this.signUpForm);
+  }
+
+  submitForm() {
+    console.log(this.signUpForm);
   }
 
 }
