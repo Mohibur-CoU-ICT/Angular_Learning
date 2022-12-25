@@ -5,10 +5,16 @@
         <div class="form-group">
           <label>Username</label>
           <input type="text" class="form-control" formControlName="username"/>
+          <span class="help-block" *ngIf="signUpForm.get('username')?.touched && signUpForm.get('username')?.invalid">
+            Please enter a valid username
+          </span>
         </div>
         <div class="form-group">
           <label>Email</label>
           <input type="text" class="form-control" formControlName="email"/>
+          <span class="help-block" *ngIf="signUpForm.get('email')?.touched && signUpForm.get('email')?.invalid">
+            Please enter a valid email
+          </span>
         </div>
 
         <div *ngFor="let gender of genders;">
