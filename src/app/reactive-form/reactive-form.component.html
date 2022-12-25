@@ -2,6 +2,10 @@
   <div class="row">
     <div class="col-md-12"></div>
       <form [formGroup]="signUpForm" (ngSubmit)="submitForm()">
+        <div class="mb-2">
+          <button class="btn btn-sm btn-info" (click)="setValue()">Set Value</button>
+          <button class="btn btn-sm btn-info ms-5" (click)="patchValue()">Patch Value</button>
+        </div>
         <div formGroupName="userData">
           <div class="form-group">
             <label>Username</label>

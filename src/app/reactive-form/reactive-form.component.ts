@@ -12,6 +12,7 @@ export class ReactiveFormComponent implements OnInit {
   genders: string[] = ['male', 'female'];
   restrictedNames: string[] = ['Mamun'];
   signUpForm!: FormGroup;
+  isValueSet: boolean = false;
 
   constructor() { }
 
@@ -21,8 +22,18 @@ export class ReactiveFormComponent implements OnInit {
         'username': new FormControl(null, [Validators.required, this.isRestrictedName.bind(this)]),
         'email': new FormControl(null, [Validators.required, Validators.email], [this.isRestrictedEmail as AsyncValidatorFn])
       }),
-      'gender': new FormControl('male'),
+      'gender': new FormControl('female'),
       'hobbies': new FormArray([])
+    });
+
+    // value changes
+    this.signUpForm.valueChanges.subscribe((value) => {
+      console.log('changed value =', value);
+    });
+
+    // status changes
+    this.signUpForm.statusChanges.subscribe((status) => {
+      console.log('changed status =', status);
     });
   }
 
@@ -55,7 +66,36 @@ export class ReactiveFormComponent implements OnInit {
     (<FormArray>this.signUpForm.get('hobbies')).push(control);
   }
 
+  // set value : sets all form-controls
+  setValue() {
+    this.isValueSet = true;
+    this.signUpForm.setValue({
+      userData: {
+        username: 'mohibur',
+        email: 'mohibur@gmail.com'
+      },
+      gender: 'male',
+      hobbies: []
+    });
+  }
+
+  // patch value : sets subset or superset of the form-control
+  patchValue() {
+    this.isValueSet = true;
+    this.signUpForm.patchValue({
+      userData: {
+        username: 'mohibur',
+      },
+      gender: 'male',
+      hobbies: []
+    });
+  }
+
   submitForm() {
     console.log(this.signUpForm);
+    if (!this.isValueSet) {
+      this.signUpForm.reset();
+    }
+    this.isValueSet = false;
   }
 }
