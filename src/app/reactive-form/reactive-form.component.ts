@@ -9,6 +9,7 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 export class ReactiveFormComponent implements OnInit {
 
   genders: string[] = ['male', 'female'];
+  restrictedNames: string[] = ['Mamun'];
   signUpForm!: FormGroup;
 
   constructor() { }
@@ -16,12 +17,19 @@ export class ReactiveFormComponent implements OnInit {
   ngOnInit(): void {
     this.signUpForm = new FormGroup({
       'userData': new FormGroup({
-        'username': new FormControl(null, Validators.required),
+        'username': new FormControl(null, [Validators.required, this.isRestrictedName.bind(this)]),
         'email': new FormControl(null, [Validators.required, Validators.email])
       }),
       'gender': new FormControl('male'),
       'hobbies': new FormArray([])
     });
+  }
+
+  isRestrictedName(control: FormControl): { [s: string]: boolean } | null {
+    if (this.restrictedNames.includes(control.value)) {
+      return { isNameRestricted: true };
+    }
+    return null;
   }
 
   get hobbyControls() {
