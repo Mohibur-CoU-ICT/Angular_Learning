@@ -15,10 +15,13 @@ export class ReactiveFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.signUpForm = new FormGroup({
-      'username': new FormControl(),
-      'email': new FormControl(),
+      'username': new FormControl(null),
+      'email': new FormControl(null),
       'gender': new FormControl('male')
     });
   }
 
+  submitForm() {
+    console.log(this.signUpForm);
+  }
 }
