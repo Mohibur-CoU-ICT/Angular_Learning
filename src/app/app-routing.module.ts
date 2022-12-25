@@ -4,6 +4,7 @@ import { CategoriesComponent } from "./categories/categories.component";
 import { EditUserComponent } from "./edit-user/edit-user.component";
 import { HomeComponent } from "./home/home.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
+import { ReactiveFormComponent } from "./reactive-form/reactive-form.component";
 import { AuthGuardService } from "./services/guards/auth-guard.service";
 import { DeactiveGuardService } from "./services/guards/deactivate-guard.service";
 import { UserResolveService } from "./services/resolvers/user-resolve.service";
@@ -24,6 +25,7 @@ const routes: Routes = [
   },
   { path: 'categories', component: CategoriesComponent },
   { path: 'template-form', component: TemplateFormComponent },
+  { path: 'reactive-form', component: ReactiveFormComponent },
   { path: 'not-found', component: PageNotFoundComponent },
   { path: '**', redirectTo: 'not-found' },
 ];
