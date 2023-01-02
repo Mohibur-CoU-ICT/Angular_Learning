@@ -30,4 +30,18 @@ export class FilterPipesComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onUserAdded() {
+    let year = this.getRandomInteger(1990, 2000);
+    let month = this.getRandomInteger(0, 11);
+    let day = this.getRandomInteger(0, 11);
+    this.users.push({
+      name: "Md. Fahim",
+      dateOfBirth: new Date(year, month, day)
+    });
+  }
+
+  // return a random integer number between [min-max] inclusive
+  getRandomInteger(min: number, max: number) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
 }
