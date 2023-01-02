@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-filter-pipes',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FilterPipesComponent implements OnInit {
 
-  users = [
+  filterString: string = '';
+
+  users: User[] = [
     {
       name: 'Mohibur Rahman',
       dateOfBirth: new Date(1996, 3, 12)
@@ -15,6 +18,10 @@ export class FilterPipesComponent implements OnInit {
     {
       name: 'Bodiul Alam',
       dateOfBirth: new Date(1989, 10, 24)
+    },
+    {
+      name: 'Moshiur Rahman',
+      dateOfBirth: new Date(2000, 6, 14)
     }
   ];
 
