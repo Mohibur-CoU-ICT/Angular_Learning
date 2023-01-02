@@ -10,6 +10,12 @@ export class FilterPipesComponent implements OnInit {
 
   filterString: string = '';
 
+  appStatus = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("User data received");
+    }, 3000);
+  });
+
   users: User[] = [
     {
       name: 'Mohibur Rahman',
