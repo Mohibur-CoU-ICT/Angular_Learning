@@ -5,6 +5,7 @@ import { EditUserComponent } from "./edit-user/edit-user.component";
 import { FilterPipesComponent } from "./filter-pipes/filter-pipes.component";
 import { HomeComponent } from "./home/home.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
+import { PostsComponent } from "./posts/posts.component";
 import { ReactiveFormComponent } from "./reactive-form/reactive-form.component";
 import { AuthGuardService } from "./services/guards/auth-guard.service";
 import { DeactiveGuardService } from "./services/guards/deactivate-guard.service";
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'template-form', component: TemplateFormComponent },
   { path: 'reactive-form', component: ReactiveFormComponent },
   { path: 'filter-pipes', component: FilterPipesComponent },
+  { path: 'posts', component: PostsComponent },
   { path: 'not-found', component: PageNotFoundComponent },
   { path: '**', redirectTo: 'not-found' },
 ];

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -21,6 +22,7 @@ import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { FilterPipesComponent } from './filter-pipes/filter-pipes.component';
 import { ShortenPipe } from './pipes/shorten.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
+import { PostsComponent } from './posts/posts.component';
 
 @NgModule({
   declarations: [
@@ -37,12 +39,14 @@ import { FilterPipe } from './pipes/filter.pipe';
     FilterPipesComponent,
     ShortenPipe,
     FilterPipe,
+    PostsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [
     AuthService,
