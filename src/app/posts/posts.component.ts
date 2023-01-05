@@ -28,19 +28,14 @@ export class PostsComponent implements OnInit {
   }
 
   getPosts() {
-    this.http.get(this.url).pipe(map((response) => {
+    this.http.get<{ [key: string]: Post }>(this.url).pipe(map((response) => {
       let posts: Post[] = [];
-      for (let k of Object.entries(response)) {
+      for (let key in response) {
         // console.log(k);
-        let post: Post = {
-          key: k[0],
-          title: k[1].title,
-          content: k[1].content
-        };
-        posts.push(post);
+        posts.push({ ...response[key], key});
       }
       return posts;
-    })).subscribe((response) => {
+    })).subscribe((response: Post[]) => {
       // console.log(response);
       this.posts = response;
     });
