@@ -12,6 +12,7 @@ export class PostsComponent implements OnInit {
 
   postForm: FormGroup;
   posts: Post[] = [];
+  error?: string;
 
   constructor(private postService: PostService) {
     this.postForm = new FormGroup({
@@ -28,6 +29,9 @@ export class PostsComponent implements OnInit {
     this.postService.getPosts().subscribe((response: Post[]) => {
       // console.log(response);
       this.posts = response;
+    }, (error) => {
+      console.log(error);
+      this.error = error.message;
     });
   }
 
@@ -36,6 +40,9 @@ export class PostsComponent implements OnInit {
     this.postService.createPost(postData).subscribe((response) => {
       console.log(response);
       this.getPosts();
+    }, (error) => {
+      console.log(error);
+      this.error = error.message;
     });
   }
 
@@ -44,6 +51,9 @@ export class PostsComponent implements OnInit {
     this.postService.deletePosts().subscribe((response) => {
       console.log(response);
       this.getPosts();
+    }, (error) => {
+      console.log(error);
+      this.error = error.message;
     });
   }
 
