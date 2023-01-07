@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { map } from "rxjs";
 import { Post } from "../models/post";
@@ -13,7 +13,11 @@ export class PostService {
   }
 
   getPosts() {
-    return this.http.get<{ [key: string]: Post }>(this.url).pipe(map((response) => {
+    return this.http.get<{ [key: string]: Post }>(this.url, {
+      headers: new HttpHeaders({
+        'custom-header': 'get-header'
+      })
+    }).pipe(map((response) => {
       let posts: Post[] = [];
       for (let key in response) {
         // console.log(k);
@@ -24,7 +28,11 @@ export class PostService {
   }
 
   createPost(postData: Post) {
-    return this.http.post<{ name: string }>(this.url, postData);
+    return this.http.post<{ name: string }>(this.url, postData, {
+      headers: new HttpHeaders({
+        'custom-header': 'post-header'
+      })
+    });
   }
 
   deletePosts() {
