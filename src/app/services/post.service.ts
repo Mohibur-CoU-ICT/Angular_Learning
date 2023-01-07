@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { map } from "rxjs";
 import { Post } from "../models/post";
@@ -13,10 +13,15 @@ export class PostService {
   }
 
   getPosts() {
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append('category', 'comment');
+    queryParams = queryParams.append('type', 'all');
+
     return this.http.get<{ [key: string]: Post }>(this.url, {
       headers: new HttpHeaders({
         'custom-header': 'get-header'
-      })
+      }),
+      params: queryParams
     }).pipe(map((response) => {
       let posts: Post[] = [];
       for (let key in response) {
