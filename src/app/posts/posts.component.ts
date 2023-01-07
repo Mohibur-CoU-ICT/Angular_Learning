@@ -39,4 +39,12 @@ export class PostsComponent implements OnInit {
     });
   }
 
+  onClearPosts(event: Event) {
+    event.preventDefault();
+    this.postService.deletePosts().subscribe((response) => {
+      console.log(response);
+      this.getPosts();
+    });
+  }
+
 }
