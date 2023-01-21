@@ -1,6 +1,6 @@
-import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
+import { HttpClient, HttpEventType, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { map } from "rxjs";
+import { map, tap } from "rxjs";
 import { Post } from "../models/post";
 
 @Injectable({ providedIn: 'root' })
@@ -36,11 +36,22 @@ export class PostService {
     return this.http.post<{ name: string }>(this.url, postData, {
       headers: new HttpHeaders({
         'custom-header': 'post-header'
-      })
+      }),
+      observe: 'response'
     });
   }
 
   deletePosts() {
-    return this.http.delete(this.url);
+    return this.http.delete(this.url, {
+      observe: 'events',
+      responseType: 'text'
+    }).pipe(tap(response => {
+      if (response.type === HttpEventType.Sent) {
+        console.log('request sent');
+      }
+      if (response.type === HttpEventType.Response) {
+        console.log(response.body);
+      }
+    }));
   }
 }
