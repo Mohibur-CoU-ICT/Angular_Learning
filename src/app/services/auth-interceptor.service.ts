@@ -5,8 +5,12 @@ export class AuthInterceptorService implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // to find the url
     // if (req.url == '')
+    let modifiedRequest =  req.clone({
+      headers: req.headers.append('auth', 'abc'),
+      params: req.params.append('hai', 'hello world'),
+    });
     console.log('Sending request interceptor');
-    return next.handle(req);
+    return next.handle(modifiedRequest);
   }
 
 }
