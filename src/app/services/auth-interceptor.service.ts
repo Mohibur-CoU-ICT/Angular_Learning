@@ -12,18 +12,11 @@ export class AuthInterceptorService implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
+    console.log("Request interceptor");
     let modifiedRequest = req.clone({
       headers: req.headers.append('auth', 'abc'),
       params: req.params.append('hai', 'hello world'),
     });
-    return next.handle(modifiedRequest).pipe(
-      tap((event) => {
-        console.log('Response from http interceptor');
-        console.log(event);
-        if (event.type === HttpEventType.Response) {
-          console.log(event.body);
-        }
-      })
-    );
+    return next.handle(modifiedRequest);
   }
 }
