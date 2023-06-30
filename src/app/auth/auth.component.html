@@ -1,21 +1,52 @@
 <div class="row">
   <div class="col-md-12">
-    <form>
+    <form #authForm="ngForm" (ngSubmit)="onFormSubmit(authForm)">
       <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" class="form-control" />
+        <input
+          type="email"
+          class="form-control"
+          ngModel
+          name="email"
+          required
+          email
+          #email="ngModel"
+        />
+        <div
+          class="help-text text-danger"
+          *ngIf="email.touched && !email.valid"
+        >
+          <div *ngIf="email.errors!['required']">Email is required</div>
+          <div *ngIf="email.errors!['email']">Invalid email</div>
+        </div>
       </div>
       <div class="form-group">
         <label for="email">Password</label>
-        <input type="password" class="form-control" />
+        <input
+          type="password"
+          class="form-control"
+          ngModel
+          name="password"
+          required
+          minlength="6"
+          #password="ngModel"
+        />
+        <div
+          class="help-text text-danger"
+          *ngIf="password.touched && !password.valid"
+        >
+          <div>{{ getPasswordErrors(password) }}</div>
+        </div>
       </div>
       <div class="mt-4">
-        <button type="submit" class="btn btn-primary">Login</button>
         <button
           type="submit"
-          class="btn btn-primary ms-5"
-          (click)="onSwitchMode()"
+          class="btn btn-primary"
+          [disabled]="!authForm.valid"
         >
+          Login
+        </button>
+        <button class="btn btn-primary ms-5" (click)="onSwitchMode()">
           Swithch to {{ isLoginMode ? "SignUp" : "Login" }}
         </button>
       </div>
