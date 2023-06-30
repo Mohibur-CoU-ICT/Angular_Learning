@@ -3,6 +3,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AuthComponent } from './auth/auth.component';
 import { AuthGuardService } from './services/guards/auth-guard.service';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { AuthService } from './services/guards/auth.service';
@@ -42,6 +43,7 @@ import { UsersComponent } from './users/users.component';
     ShortenPipe,
     FilterPipe,
     PostsComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,14 +54,22 @@ import { UsersComponent } from './users/users.component';
   ],
   providers: [
     // order matters; first place first execution
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptorService, multi: true },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoggingInterceptorService,
+      multi: true,
+    },
     AuthService,
     AuthGuardService,
     DeactiveGuardService,
     UserService,
-    UserResolveService
+    UserResolveService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

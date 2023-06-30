@@ -1,29 +1,69 @@
 <div class="container">
-  <div class="row mb-3 justify-content-end bg-dark">
-    <div class="col-md-12">
-      <button class="btn btn-success btn-sm me-3" (click)="onLoginClick()">Login</button>
-      <button class="btn btn-secondary btn-sm" (click)="onLogoutClick()">Logout</button>
-    </div>
-  </div>
   <div class="row">
     <div class="col-md-3">
       <ul class="nav flex-column nav-pills">
-        <li class="nav-item"><a class="nav-link" routerLink="/" routerLinkActive="active"
-            [routerLinkActiveOptions]="{exact: true}">Home</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/users" routerLinkActive="active">Users</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/categories" routerLinkActive="active">Categories</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/template-form" routerLinkActive="active">Template Form</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/reactive-form" routerLinkActive="active">Reactive Form</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/filter-pipes" routerLinkActive="active">Filter Pipes</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/posts" routerLinkActive="active">Posts</a></li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/auth"
+            routerLinkActive="active"
+            >Auth</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/users" routerLinkActive="active"
+            >Users</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/categories" routerLinkActive="active"
+            >Categories</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/template-form"
+            routerLinkActive="active"
+            >Template Form</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/reactive-form"
+            routerLinkActive="active"
+            >Reactive Form</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/filter-pipes"
+            routerLinkActive="active"
+            >Filter Pipes</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/posts" routerLinkActive="active"
+            >Posts</a
+          >
+        </li>
       </ul>
     </div>
     <div class="col-md-9">
       <div class="row">
         <div class="col-md-12">
-          <div *ngIf="userAdded">
-            Add user button clicked
-          </div>
+          <div *ngIf="userAdded">Add user button clicked</div>
           <router-outlet></router-outlet>
         </div>
       </div>
