@@ -9,6 +9,8 @@ import { Component } from '@angular/core';
 })
 export class AuthComponent {
   isLoginMode: boolean = true;
+  isLoading: boolean = false;
+  error: string = '';
 
   constructor(private authService: AuthService) {}
 
@@ -20,6 +22,7 @@ export class AuthComponent {
     if (!authForm.valid) {
       return;
     }
+    this.isLoading = true;
     if (this.isLoginMode) {
       // perform login request call
       this.authService;
@@ -30,9 +33,12 @@ export class AuthComponent {
         .subscribe(
           (response) => {
             console.log(response);
+            this.isLoading = false;
           },
           (error) => {
             console.log(error);
+            this.isLoading = false;
+            this.error = 'An error occured';
           }
         );
     }

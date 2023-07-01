@@ -14,6 +14,7 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { FilterPipesComponent } from './filter-pipes/filter-pipes.component';
 import { HomeComponent } from './home/home.component';
+import { LoadingSpinnerCompponent } from './shared/loading-spinner/loading-spinner.component';
 import { LoggingInterceptorService } from './services/logging-interceptor.service';
 import { NgModule } from '@angular/core';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -44,6 +45,7 @@ import { UsersComponent } from './users/users.component';
     FilterPipe,
     PostsComponent,
     AuthComponent,
+    LoadingSpinnerCompponent,
   ],
   imports: [
     BrowserModule,
