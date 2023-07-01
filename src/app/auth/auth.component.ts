@@ -1,7 +1,8 @@
+import { AuthResponse, AuthService } from '../services/guards/auth.service';
 import { FormControl, NgForm, NgModel } from '@angular/forms';
 
-import { AuthService } from '../services/guards/auth.service';
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-auth',
@@ -23,24 +24,31 @@ export class AuthComponent {
       return;
     }
     this.isLoading = true;
+    let authObs: Observable<AuthResponse>;
     if (this.isLoginMode) {
       // perform login request call
+      authObs = this.authService.login(
+        authForm.value.email,
+        authForm.value.password
+      );
       this.authService;
     } else {
       // perform signup request call
-      this.authService
-        .signup(authForm.value.email, authForm.value.password)
-        .subscribe(
-          (response) => {
-            console.log(response);
-            this.isLoading = false;
-          },
-          (errorMsg) => {
-            this.isLoading = false;
-            this.error = errorMsg;
-          }
-        );
+      authObs = this.authService.signup(
+        authForm.value.email,
+        authForm.value.password
+      );
     }
+    authObs.subscribe(
+      (response) => {
+        console.log(response);
+        this.isLoading = false;
+      },
+      (errorMsg) => {
+        this.isLoading = false;
+        this.error = errorMsg;
+      }
+    );
   }
 
   getPasswordErrors(password: NgModel) {

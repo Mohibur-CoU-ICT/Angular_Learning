@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+
+import { AuthService } from './services/guards/auth.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { AuthService } from './services/guards/auth.service';
 import { UserService } from './services/user.service';
 
 @Component({
@@ -23,7 +24,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   onLoginClick() {
-    this.authService.login();
+    // this.authService.login();
   }
 
   onLogoutClick() {
