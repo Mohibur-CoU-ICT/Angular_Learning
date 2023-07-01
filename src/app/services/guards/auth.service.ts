@@ -1,7 +1,8 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { catchError, throwError } from 'rxjs';
+import { catchError, tap, throwError } from 'rxjs';
 
 import { Injectable } from '@angular/core';
+import { User } from 'src/app/auth/user.model';
 
 export interface AuthResponse {
   idToken: string;
@@ -26,7 +27,7 @@ export class AuthService {
         `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyD9wSzHUem_xXTpzcvank23OGz00zhJNXw`,
         { email, password, returnSecureToken: true }
       )
-      .pipe(catchError(this.getErrorHandler));
+      .pipe(catchError(this.getErrorHandler), tap(this.hadleUser));
   }
 
   login(email: string, password: string) {
@@ -36,7 +37,19 @@ export class AuthService {
     `,
         { email, password, returnSecureToken: true }
       )
-      .pipe(catchError(this.getErrorHandler));
+      .pipe(catchError(this.getErrorHandler), tap(this.hadleUser));
+  }
+
+  private hadleUser(response: AuthResponse) {
+    const expireDate = new Date(
+      new Date().getTime() + +response.expiresIn * 1000
+    );
+    const user = new User(
+      response.email,
+      response.localId,
+      response.idToken,
+      expireDate
+    );
   }
 
   getErrorHandler(errorRes: HttpErrorResponse) {

@@ -16,6 +16,7 @@ import { FilterPipesComponent } from './filter-pipes/filter-pipes.component';
 import { HomeComponent } from './home/home.component';
 import { LoadingSpinnerCompponent } from './shared/loading-spinner/loading-spinner.component';
 import { LoggingInterceptorService } from './services/logging-interceptor.service';
+import { NavigationComponent } from './navigation/navigation.component';
 import { NgModule } from '@angular/core';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PostsComponent } from './posts/posts.component';
@@ -46,6 +47,7 @@ import { UsersComponent } from './users/users.component';
     PostsComponent,
     AuthComponent,
     LoadingSpinnerCompponent,
+    NavigationComponent,
   ],
   imports: [
     BrowserModule,
