@@ -1,5 +1,6 @@
 import { FormControl, NgForm, NgModel } from '@angular/forms';
 
+import { AuthService } from '../services/guards/auth.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -9,12 +10,32 @@ import { Component } from '@angular/core';
 export class AuthComponent {
   isLoginMode: boolean = true;
 
+  constructor(private authService: AuthService) {}
+
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
   }
 
   onFormSubmit(authForm: NgForm) {
-    console.log(authForm.value);
+    if (!authForm.valid) {
+      return;
+    }
+    if (this.isLoginMode) {
+      // perform login request call
+      this.authService;
+    } else {
+      // perform signup request call
+      this.authService
+        .signup(authForm.value.email, authForm.value.password)
+        .subscribe(
+          (response) => {
+            console.log(response);
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+    }
   }
 
   getPasswordErrors(password: NgModel) {

@@ -12,10 +12,10 @@ export class AuthInterceptorService implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    console.log("Request interceptor");
+    console.log('Request interceptor');
     let modifiedRequest = req.clone({
-      headers: req.headers.append('auth', 'abc'),
-      params: req.params.append('hai', 'hello world'),
+      // headers: req.headers.append('auth', 'abc'),
+      // params: req.params.append('hai', 'hello world'),
     });
     return next.handle(modifiedRequest);
   }
