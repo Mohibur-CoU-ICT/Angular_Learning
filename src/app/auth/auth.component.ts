@@ -31,7 +31,6 @@ export class AuthComponent {
         authForm.value.email,
         authForm.value.password
       );
-      this.authService;
     } else {
       // perform signup request call
       authObs = this.authService.signup(

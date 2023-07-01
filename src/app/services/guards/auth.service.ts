@@ -1,6 +1,6 @@
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, throwError } from 'rxjs';
 
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 export interface AuthResponse {
@@ -26,28 +26,36 @@ export class AuthService {
         `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyD9wSzHUem_xXTpzcvank23OGz00zhJNXw`,
         { email, password, returnSecureToken: true }
       )
-      .pipe(
-        catchError((errorRes) => {
-          console.log(errorRes);
-          let errorMsg = 'An error occured';
-          if (!errorRes.error || !errorRes.error.error) {
-            return throwError(errorMsg);
-          }
-          switch (errorRes.error.message) {
-            case 'EMAIL_EXISTS':
-              errorMsg = 'Email already exists';
-          }
-          return throwError(errorMsg);
-        })
-      );
+      .pipe(catchError(this.getErrorHandler));
   }
 
   login(email: string, password: string) {
-    return this.http.post<AuthResponse>(
-      `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyD9wSzHUem_xXTpzcvank23OGz00zhJNXw
+    return this.http
+      .post<AuthResponse>(
+        `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyD9wSzHUem_xXTpzcvank23OGz00zhJNXw
     `,
-      { email, password, returnSecureToken: true }
-    );
+        { email, password, returnSecureToken: true }
+      )
+      .pipe(catchError(this.getErrorHandler));
+  }
+
+  getErrorHandler(errorRes: HttpErrorResponse) {
+    let errorMsg = 'An error occured';
+    if (!errorRes.error || !errorRes.error.error) {
+      return throwError(errorMsg);
+    }
+    switch (errorRes.error.error.message) {
+      case 'EMAIL_EXISTS':
+        errorMsg = 'Email already exists';
+        break;
+      case 'EMAIL_NOT_FOUND':
+        errorMsg = 'Email not found';
+        break;
+      case 'INVALID_PASSWORD':
+        errorMsg = 'Invalid password';
+        break;
+    }
+    return throwError(errorMsg);
   }
 
   logout() {
