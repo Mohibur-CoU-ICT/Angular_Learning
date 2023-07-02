@@ -1,6 +1,7 @@
 import { RouterModule, Routes } from '@angular/router';
 
 import { AuthComponent } from './auth/auth.component';
+import { AuthGuard } from './services/guards/auth.guard';
 import { AuthGuardService } from './services/guards/auth-guard.service';
 import { CategoriesComponent } from './categories/categories.component';
 import { DeactiveGuardService } from './services/guards/deactivate-guard.service';
@@ -36,7 +37,7 @@ const routes: Routes = [
   { path: 'template-form', component: TemplateFormComponent },
   { path: 'reactive-form', component: ReactiveFormComponent },
   { path: 'filter-pipes', component: FilterPipesComponent },
-  { path: 'posts', component: PostsComponent },
+  { path: 'posts', component: PostsComponent, canActivate: [AuthGuard] },
   { path: 'auth', component: AuthComponent },
   { path: 'not-found', component: PageNotFoundComponent },
   { path: '**', redirectTo: 'not-found' },
