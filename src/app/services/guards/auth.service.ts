@@ -53,6 +53,7 @@ export class AuthService {
       expireDate
     );
     this.userSub.next(user);
+    localStorage.setItem('userData', JSON.stringify(user));
   }
 
   getErrorHandler(errorRes: HttpErrorResponse) {
@@ -72,6 +73,30 @@ export class AuthService {
         break;
     }
     return throwError(errorMsg);
+  }
+
+  autoLogin() {
+    let userData: {
+      email: string;
+      _token: string;
+      localId: string;
+      expirationDate: string;
+    } = JSON.parse(localStorage.getItem('userData')!);
+
+    if (!userData) {
+      return;
+    }
+
+    let user = new User(
+      userData.email,
+      userData.localId,
+      userData._token,
+      new Date(userData.expirationDate)
+    );
+
+    if (user.token) {
+      this.userSub.next(user);
+    }
   }
 
   logout() {

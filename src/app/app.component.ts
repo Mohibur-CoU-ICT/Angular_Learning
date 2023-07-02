@@ -18,9 +18,10 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(private authService: AuthService, private router: Router, private userService: UserService) {}
   
   ngOnInit() {
-    this.userService.addUserEvent.subscribe(data => {
-      this.userAdded = data;
-    });
+    this.authService.autoLogin();
+    // this.userService.addUserEvent.subscribe(data => {
+    //   this.userAdded = data;
+    // });
   }
 
   onLoginClick() {
