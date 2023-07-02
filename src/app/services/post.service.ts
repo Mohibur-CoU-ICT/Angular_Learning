@@ -20,16 +20,7 @@ export class PostService {
   }
 
   getPosts() {
-    return this.authService.userSub.pipe(
-      take(1),
-      switchMap((user) => {
-        console.log(user);
-        let queryParams = new HttpParams();
-        queryParams = queryParams.append('auth', user.token!);
-        return this.http.get<{ [key: string]: Post }>(this.url, {
-          params: queryParams,
-        });
-      }),
+    return this.http.get<{ [key: string]: Post }>(this.url).pipe(
       map((response) => {
         let posts: Post[] = [];
         for (let key in response) {

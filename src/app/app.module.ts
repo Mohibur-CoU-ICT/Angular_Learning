@@ -7,6 +7,7 @@ import { AuthComponent } from './auth/auth.component';
 import { AuthGuardService } from './services/guards/auth-guard.service';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { AuthService } from './services/guards/auth.service';
+import { AuthTokenInterceptorService } from './services/auth-token-interceptor.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { CategoriesComponent } from './categories/categories.component';
 import { DeactiveGuardService } from './services/guards/deactivate-guard.service';
@@ -66,6 +67,11 @@ import { UsersComponent } from './users/users.component';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoggingInterceptorService,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthTokenInterceptorService,
       multi: true,
     },
     AuthService,
