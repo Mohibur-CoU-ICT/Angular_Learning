@@ -1,9 +1,13 @@
 <ul class="nav flex-column nav-pills">
   <li class="nav-item" *ngIf="!isAuthenticated">
-    <a class="nav-link" routerLink="/auth" routerLinkActive="active">Authenticate</a>
+    <a class="nav-link" routerLink="/auth" routerLinkActive="active"
+      >Authenticate</a
+    >
   </li>
   <li class="nav-item" *ngIf="isAuthenticated">
-    <a class="nav-link" routerLink="/auth" routerLinkActive="active">Logout</a>
+    <a class="nav-link" (click)="onLogout($event)" href="#" routerLinkActive="active"
+      >Logout</a
+    >
   </li>
   <div *ngIf="isAuthenticated">
     <li class="nav-item">

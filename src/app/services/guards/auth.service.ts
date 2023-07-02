@@ -2,6 +2,7 @@ import { BehaviorSubject, catchError, tap, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/auth/user.model';
 
 export interface AuthResponse {
@@ -20,7 +21,7 @@ export class AuthService {
   isLoggedIn = false;
   userSub = new BehaviorSubject<User>(null!);
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   signup(email: string, password: string) {
     return this.http
@@ -74,7 +75,8 @@ export class AuthService {
   }
 
   logout() {
-    this.isLoggedIn = false;
+    this.userSub.next(null!);
+    this.router.navigate(['/auth']);
   }
 
   isAuthenticated() {

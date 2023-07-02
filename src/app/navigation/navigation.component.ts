@@ -16,4 +16,9 @@ export class NavigationComponent implements OnInit {
       this.isAuthenticated = user ? true : false;
     });
   }
+
+  onLogout(e: Event) {
+    e.preventDefault();
+    this.authService.logout();
+  }
 }
