@@ -1,11 +1,13 @@
+<ng-template appPlaceholder></ng-template>
+
 <div class="row">
   <div class="col-md-12">
     <!-- <div *ngIf="error" class="alert alert-danger my-3">{{ error }}</div> -->
-    <app-alert-modal
+    <!-- <app-alert-modal
       [error]="error"
       (close)="error = null"
       *ngIf="error"
-    ></app-alert-modal>
+    ></app-alert-modal> -->
     <div *ngIf="isLoading" class="text-center my-5">
       <app-loading-spinner></app-loading-spinner>
     </div>

@@ -21,6 +21,7 @@ import { LoggingInterceptorService } from './services/logging-interceptor.servic
 import { NavigationComponent } from './navigation/navigation.component';
 import { NgModule } from '@angular/core';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PlaceholderDirective } from './shared/placeholder.directive';
 import { PostsComponent } from './posts/posts.component';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { RolesComponent } from './roles/roles.component';
@@ -51,6 +52,7 @@ import { UsersComponent } from './users/users.component';
     LoadingSpinnerCompponent,
     NavigationComponent,
     AlertModalComponent,
+    PlaceholderDirective,
   ],
   imports: [
     BrowserModule,
