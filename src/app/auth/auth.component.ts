@@ -1,9 +1,10 @@
 import { AuthResponse, AuthService } from '../services/guards/auth.service';
-import { Component, ComponentFactoryResolver } from '@angular/core';
+import { Component, ComponentFactoryResolver, ViewChild } from '@angular/core';
 import { NgForm, NgModel } from '@angular/forms';
 
 import { AlertModalComponent } from '../shared/alert-modal/alert-modal.component';
 import { Observable } from 'rxjs';
+import { PlaceholderDirective } from '../shared/placeholder.directive';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,6 +15,7 @@ export class AuthComponent {
   isLoginMode: boolean = true;
   isLoading: boolean = false;
   error: string | null = null;
+  @ViewChild(PlaceholderDirective) alertHost!: PlaceholderDirective;
 
   constructor(
     private authService: AuthService,
@@ -63,6 +65,8 @@ export class AuthComponent {
       this.componentFactoryResolver.resolveComponentFactory(
         AlertModalComponent
       );
+    this.alertHost.viewContainerRef.clear();
+    this.alertHost.viewContainerRef.createComponent(componentFactory);
   }
 
   getPasswordErrors(password: NgModel) {
