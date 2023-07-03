@@ -1,9 +1,14 @@
 import { AuthResponse, AuthService } from '../services/guards/auth.service';
-import { Component, ComponentFactoryResolver, ViewChild } from '@angular/core';
+import {
+  Component,
+  ComponentFactoryResolver,
+  OnDestroy,
+  ViewChild,
+} from '@angular/core';
 import { NgForm, NgModel } from '@angular/forms';
+import { Observable, Subscription } from 'rxjs';
 
 import { AlertModalComponent } from '../shared/alert-modal/alert-modal.component';
-import { Observable } from 'rxjs';
 import { PlaceholderDirective } from '../shared/placeholder.directive';
 import { Router } from '@angular/router';
 
@@ -11,11 +16,12 @@ import { Router } from '@angular/router';
   selector: 'app-auth',
   templateUrl: './auth.component.html',
 })
-export class AuthComponent {
+export class AuthComponent implements OnDestroy {
   isLoginMode: boolean = true;
   isLoading: boolean = false;
   error: string | null = null;
   @ViewChild(PlaceholderDirective) alertHost!: PlaceholderDirective;
+  closeSubscription!: Subscription;
 
   constructor(
     private authService: AuthService,
@@ -66,7 +72,19 @@ export class AuthComponent {
         AlertModalComponent
       );
     this.alertHost.viewContainerRef.clear();
-    this.alertHost.viewContainerRef.createComponent(componentFactory);
+    const componentRef =
+      this.alertHost.viewContainerRef.createComponent(componentFactory);
+    componentRef.instance.error = message;
+    this.closeSubscription = componentRef.instance.close.subscribe((_data) => {
+      this.closeSubscription.unsubscribe();
+      this.alertHost.viewContainerRef.clear();
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.closeSubscription) {
+      this.closeSubscription.unsubscribe();
+    }
   }
 
   getPasswordErrors(password: NgModel) {
