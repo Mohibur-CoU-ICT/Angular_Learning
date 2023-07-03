@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class AuthComponent {
   isLoginMode: boolean = true;
   isLoading: boolean = false;
-  error: string = '';
+  error: string | null = null;
 
   constructor(private authService: AuthService, private router: Router) {}
 
