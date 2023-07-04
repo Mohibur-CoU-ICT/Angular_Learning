@@ -4,9 +4,9 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AlertModalComponent } from './shared/alert-modal/alert-modal.component';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthComponent } from './auth/auth.component';
 import { AuthGuardService } from './services/guards/auth-guard.service';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { AuthModule } from './auth.module';
 import { AuthService } from './services/guards/auth.service';
 import { AuthTokenInterceptorService } from './services/auth-token-interceptor.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -15,13 +15,12 @@ import { DeactiveGuardService } from './services/guards/deactivate-guard.service
 import { FilterPipe } from './pipes/filter.pipe';
 import { FilterPipesComponent } from './filter-pipes/filter-pipes.component';
 import { HomeComponent } from './home/home.component';
-import { LoadingSpinnerCompponent } from './shared/loading-spinner/loading-spinner.component';
 import { LoggingInterceptorService } from './services/logging-interceptor.service';
 import { NavigationComponent } from './navigation/navigation.component';
 import { NgModule } from '@angular/core';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PlaceholderDirective } from './shared/placeholder.directive';
-import { PostsComponent } from './posts/posts.component';
+import { PostModule } from './post.module';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { RolesComponent } from './roles/roles.component';
 import { ShortenPipe } from './pipes/shorten.pipe';
@@ -42,9 +41,6 @@ import { UserService } from './services/user.service';
     FilterPipesComponent,
     ShortenPipe,
     FilterPipe,
-    PostsComponent,
-    AuthComponent,
-    LoadingSpinnerCompponent,
     NavigationComponent,
     AlertModalComponent,
     PlaceholderDirective,
@@ -52,6 +48,8 @@ import { UserService } from './services/user.service';
   imports: [
     BrowserModule,
     UserModule,
+    PostModule,
+    AuthModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
