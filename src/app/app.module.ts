@@ -12,7 +12,6 @@ import { AuthTokenInterceptorService } from './services/auth-token-interceptor.s
 import { BrowserModule } from '@angular/platform-browser';
 import { CategoriesComponent } from './categories/categories.component';
 import { DeactiveGuardService } from './services/guards/deactivate-guard.service';
-import { EditUserComponent } from './edit-user/edit-user.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { FilterPipesComponent } from './filter-pipes/filter-pipes.component';
 import { HomeComponent } from './home/home.component';
@@ -27,20 +26,16 @@ import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { RolesComponent } from './roles/roles.component';
 import { ShortenPipe } from './pipes/shorten.pipe';
 import { TemplateFormComponent } from './template-form/template-form.component';
-import { UserComponent } from './user/user.component';
+import { UserModule } from './user.module';
 import { UserResolveService } from './services/resolvers/user-resolve.service';
 import { UserService } from './services/user.service';
-import { UsersComponent } from './users/users.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    UsersComponent,
     RolesComponent,
     CategoriesComponent,
-    UserComponent,
-    EditUserComponent,
     PageNotFoundComponent,
     TemplateFormComponent,
     ReactiveFormComponent,
@@ -60,6 +55,7 @@ import { UsersComponent } from './users/users.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    UserModule
   ],
   providers: [
     // order matters; first place first execution

@@ -2,7 +2,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AuthComponent } from './auth/auth.component';
 import { AuthGuard } from './services/guards/auth.guard';
-import { AuthGuardService } from './services/guards/auth-guard.service';
 import { CategoriesComponent } from './categories/categories.component';
 import { DeactiveGuardService } from './services/guards/deactivate-guard.service';
 import { EditUserComponent } from './edit-user/edit-user.component';
@@ -22,7 +21,7 @@ const routes: Routes = [
   {
     path: 'users',
     component: UsersComponent,
-    canActivateChild: [AuthGuardService],
+    canActivate: [AuthGuard],
     children: [
       { path: ':id/:name', component: UserComponent },
       {
