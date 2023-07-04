@@ -12,8 +12,7 @@ import { AuthTokenInterceptorService } from './services/auth-token-interceptor.s
 import { BrowserModule } from '@angular/platform-browser';
 import { CategoriesComponent } from './categories/categories.component';
 import { DeactiveGuardService } from './services/guards/deactivate-guard.service';
-import { FilterPipe } from './pipes/filter.pipe';
-import { FilterPipesComponent } from './filter-pipes/filter-pipes.component';
+import { FilterModule } from './filter.module';
 import { HomeComponent } from './home/home.component';
 import { LoggingInterceptorService } from './services/logging-interceptor.service';
 import { NavigationComponent } from './navigation/navigation.component';
@@ -23,7 +22,6 @@ import { PlaceholderDirective } from './shared/placeholder.directive';
 import { PostModule } from './post.module';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { RolesComponent } from './roles/roles.component';
-import { ShortenPipe } from './pipes/shorten.pipe';
 import { TemplateFormComponent } from './template-form/template-form.component';
 import { UserModule } from './user.module';
 import { UserResolveService } from './services/resolvers/user-resolve.service';
@@ -38,9 +36,6 @@ import { UserService } from './services/user.service';
     PageNotFoundComponent,
     TemplateFormComponent,
     ReactiveFormComponent,
-    FilterPipesComponent,
-    ShortenPipe,
-    FilterPipe,
     NavigationComponent,
     AlertModalComponent,
     PlaceholderDirective,
@@ -50,6 +45,7 @@ import { UserService } from './services/user.service';
     UserModule,
     PostModule,
     AuthModule,
+    FilterModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
