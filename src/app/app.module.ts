@@ -51,11 +51,11 @@ import { UserService } from './services/user.service';
   ],
   imports: [
     BrowserModule,
+    UserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    UserModule
   ],
   providers: [
     // order matters; first place first execution
