@@ -16,6 +16,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { PlaceholderDirective } from './shared/placeholder.directive';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { RolesComponent } from './roles/roles.component';
+import { SharedModule } from './shared.module';
 import { TemplateFormComponent } from './template-form/template-form.component';
 
 @NgModule({
@@ -40,6 +41,7 @@ import { TemplateFormComponent } from './template-form/template-form.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
