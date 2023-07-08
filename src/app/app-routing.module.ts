@@ -9,6 +9,14 @@ import { TemplateFormComponent } from './template-form/template-form.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, data: { page: 1, search: 'Mohibur' } },
+  {
+    path: 'users',
+    loadChildren: () => import('./user.module').then((m) => m.UserModule),
+  },
+  {
+    path: 'posts',
+    loadChildren: () => import('./post.module').then((m) => m.PostModule),
+  },
   { path: 'categories', component: CategoriesComponent },
   { path: 'template-form', component: TemplateFormComponent },
   { path: 'reactive-form', component: ReactiveFormComponent },

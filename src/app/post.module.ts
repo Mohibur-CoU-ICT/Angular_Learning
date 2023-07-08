@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     RouterModule.forChild([
       {
-        path: 'posts',
+        path: '',
         component: PostsComponent,
         canActivate: [AuthGuard],
       },

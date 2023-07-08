@@ -10,7 +10,7 @@ import { UsersComponent } from './users/users.component';
 
 const userRoutes: Routes = [
   {
-    path: 'users',
+    path: '',
     component: UsersComponent,
     canActivate: [AuthGuard],
     children: [

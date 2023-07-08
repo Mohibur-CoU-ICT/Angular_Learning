@@ -14,11 +14,9 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { NgModule } from '@angular/core';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PlaceholderDirective } from './shared/placeholder.directive';
-import { PostModule } from './post.module';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { RolesComponent } from './roles/roles.component';
 import { TemplateFormComponent } from './template-form/template-form.component';
-import { UserModule } from './user.module';
 
 @NgModule({
   declarations: [
@@ -36,8 +34,6 @@ import { UserModule } from './user.module';
   imports: [
     BrowserModule,
     CoreModule,
-    UserModule,
-    PostModule,
     AuthModule,
     FilterModule,
     AppRoutingModule,
